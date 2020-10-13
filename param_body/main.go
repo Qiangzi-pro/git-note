@@ -14,7 +14,9 @@ func main() {
 		if err != nil {
 			c.String(http.StatusBadRequest, err.Error())
 			c.Abort()
+			return
 		}
+
 		c.Request.Body = ioutil.NopCloser(bytes.NewBuffer(bodyBytes))
 		firstName := c.PostForm("first_name")
 		lastName := c.PostForm("last_name")
